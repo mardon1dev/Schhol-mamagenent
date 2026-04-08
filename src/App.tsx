@@ -103,25 +103,25 @@ export default function App() {
         <NavButton 
           active={currentScreen === 'dashboard'} 
           icon={<LayoutDashboard className="w-6 h-6" />} 
-          label="Home" 
+          label="Asosiy" 
           onClick={() => navigateTo('dashboard')} 
         />
         <NavButton 
           active={currentScreen === 'explorer'} 
           icon={<BookOpen className="w-6 h-6" />} 
-          label="Curriculum" 
+          label="O'quv rejasi" 
           onClick={() => navigateTo('explorer')} 
         />
         <NavButton 
           active={currentScreen === 'search'} 
           icon={<Search className="w-6 h-6" />} 
-          label="Search" 
+          label="Qidiruv" 
           onClick={() => navigateTo('search')} 
         />
         <NavButton 
           active={false} 
           icon={<Settings className="w-6 h-6" />} 
-          label="Settings" 
+          label="Sozlamalar" 
           onClick={() => {}} 
         />
       </nav>

@@ -5,16 +5,20 @@ import { MOCK_CURRICULUM } from '../utils/mockData';
 
 interface CurriculumState {
   grades: Grade[];
+  completedObjectives: Record<string, boolean>; // lessonId-objectiveIndex -> boolean
   setGrades: (grades: Grade[]) => void;
   updateLessonStatus: (lessonId: string, status: LessonStatus) => void;
+  toggleObjective: (lessonId: string, objectiveIndex: number) => void;
   getOverallProgress: () => number;
   getActiveModules: () => { title: string; subject: string; progress: number }[];
+  getStats: () => { completed: number; inProgress: number };
 }
 
 export const useCurriculumStore = create<CurriculumState>()(
   persist(
     (set, get) => ({
       grades: MOCK_CURRICULUM,
+      completedObjectives: {},
       
       setGrades: (grades) => set({ grades }),
 
@@ -32,6 +36,16 @@ export const useCurriculumStore = create<CurriculumState>()(
               })),
             })),
           })),
+        }));
+      },
+
+      toggleObjective: (lessonId, objectiveIndex) => {
+        const key = `${lessonId}-${objectiveIndex}`;
+        set((state) => ({
+          completedObjectives: {
+            ...state.completedObjectives,
+            [key]: !state.completedObjectives[key]
+          }
         }));
       },
 
@@ -77,6 +91,25 @@ export const useCurriculumStore = create<CurriculumState>()(
         );
 
         return activeModules;
+      },
+
+      getStats: () => {
+        const grades = get().grades;
+        let completed = 0;
+        let inProgress = 0;
+
+        grades.forEach((g) =>
+          g.subjects.forEach((s) =>
+            s.modules.forEach((m) =>
+              m.lessons.forEach((l) => {
+                if (l.status === 'Completed') completed++;
+                if (l.status === 'In Progress') inProgress++;
+              })
+            )
+          )
+        );
+
+        return { completed, inProgress };
       }
     }),
     {

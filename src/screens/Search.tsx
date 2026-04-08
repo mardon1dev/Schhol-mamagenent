@@ -43,15 +43,15 @@ export default function SearchScreen({ onSelectLesson }: SearchScreenProps) {
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-2xl font-bold text-slate-800 mb-1">Global Search</h2>
-        <p className="text-slate-500 text-sm">Find any lesson, module, or topic.</p>
+        <h2 className="text-2xl font-bold text-slate-800 mb-1">Umumiy qidiruv</h2>
+        <p className="text-slate-500 text-sm">Har qanday dars, modul yoki mavzuni toping.</p>
       </section>
 
       <div className="relative">
         <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
         <Input 
           className="pl-10 h-12 rounded-2xl border-slate-200 focus-visible:ring-blue-500 bg-white shadow-sm"
-          placeholder="Search for 'Algebra', 'Newton', etc..."
+          placeholder="Qidirish: 'Algebra', 'Nyuton' va h.k..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           autoFocus
@@ -62,7 +62,7 @@ export default function SearchScreen({ onSelectLesson }: SearchScreenProps) {
         {query.trim() === '' ? (
           <div className="text-center py-12 space-y-3">
             <SearchIcon className="w-12 h-12 text-slate-200 mx-auto" />
-            <p className="text-slate-400 text-sm">Start typing to search the curriculum.</p>
+            <p className="text-slate-400 text-sm">O'quv rejasini qidirish uchun yozishni boshlang.</p>
           </div>
         ) : results.length > 0 ? (
           results.map(({ lesson, grade, subject }, index) => (
@@ -101,7 +101,7 @@ export default function SearchScreen({ onSelectLesson }: SearchScreenProps) {
           ))
         ) : (
           <div className="text-center py-12 space-y-3">
-            <p className="text-slate-400 text-sm">No results found for "{query}".</p>
+            <p className="text-slate-400 text-sm">"{query}" bo'yicha natijalar topilmadi.</p>
           </div>
         )}
       </div>

@@ -24,7 +24,7 @@ interface LessonDetailProps {
 }
 
 export default function LessonDetail({ lesson, onBack }: LessonDetailProps) {
-  const { updateLessonStatus, grades } = useCurriculumStore();
+  const { updateLessonStatus, toggleObjective, completedObjectives, grades } = useCurriculumStore();
   
   // Find context (Grade/Subject) for the lesson
   let gradeTitle = '';
@@ -70,7 +70,7 @@ export default function LessonDetail({ lesson, onBack }: LessonDetailProps) {
               className={lesson.status === 'In Progress' ? 'bg-blue-600 hover:bg-blue-700' : ''}
               onClick={() => handleStatusChange('In Progress')}
             >
-              {lesson.status === 'In Progress' ? 'Active' : 'Start'}
+              {lesson.status === 'In Progress' ? 'Faol' : 'Boshlash'}
             </Button>
             <Button 
               size="sm" 
@@ -78,7 +78,7 @@ export default function LessonDetail({ lesson, onBack }: LessonDetailProps) {
               className={lesson.status === 'Completed' ? 'bg-green-600 hover:bg-green-700' : ''}
               onClick={() => handleStatusChange('Completed')}
             >
-              {lesson.status === 'Completed' ? 'Done' : 'Complete'}
+              {lesson.status === 'Completed' ? 'Tugallandi' : 'Tugatish'}
             </Button>
           </div>
         </CardContent>
@@ -87,14 +87,19 @@ export default function LessonDetail({ lesson, onBack }: LessonDetailProps) {
       {/* Objectives */}
       <section className="space-y-3">
         <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-          Objectives
+          Maqsadlar
         </h3>
         <Card className="border-none bg-white shadow-sm">
           <CardContent className="p-4 space-y-4">
             {lesson.objectives.map((objective, i) => (
               <div key={i} className="flex items-start gap-3 group">
                 <div className="mt-1">
-                  <Checkbox id={`obj-${i}`} className="rounded-full border-slate-300 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600" />
+                  <Checkbox 
+                    id={`obj-${i}`} 
+                    checked={completedObjectives[`${lesson.id}-${i}`] || false}
+                    onCheckedChange={() => toggleObjective(lesson.id, i)}
+                    className="rounded-full border-slate-300 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600" 
+                  />
                 </div>
                 <Label 
                   htmlFor={`obj-${i}`} 
@@ -110,7 +115,7 @@ export default function LessonDetail({ lesson, onBack }: LessonDetailProps) {
 
       {/* Resources */}
       <section className="space-y-3">
-        <h3 className="text-lg font-bold text-slate-800">Resources</h3>
+        <h3 className="text-lg font-bold text-slate-800">Resurslar</h3>
         {lesson.resources.length > 0 ? (
           <div className="space-y-2">
             {lesson.resources.map((resource) => (
@@ -131,7 +136,7 @@ export default function LessonDetail({ lesson, onBack }: LessonDetailProps) {
             ))}
           </div>
         ) : (
-          <p className="text-sm text-slate-400 italic px-1">No resources available for this lesson.</p>
+          <p className="text-sm text-slate-400 italic px-1">Ushbu dars uchun resurslar mavjud emas.</p>
         )}
       </section>
     </div>
@@ -141,11 +146,11 @@ export default function LessonDetail({ lesson, onBack }: LessonDetailProps) {
 function StatusBadge({ status }: { status: LessonStatus }) {
   switch (status) {
     case 'Completed':
-      return <Badge className="bg-green-50 text-green-600 hover:bg-green-50 border-none">Completed</Badge>;
+      return <Badge className="bg-green-50 text-green-600 hover:bg-green-50 border-none">Tugallangan</Badge>;
     case 'In Progress':
-      return <Badge className="bg-blue-50 text-blue-600 hover:bg-blue-50 border-none">In Progress</Badge>;
+      return <Badge className="bg-blue-50 text-blue-600 hover:bg-blue-50 border-none">Jarayonda</Badge>;
     default:
-      return <Badge className="bg-slate-100 text-slate-500 hover:bg-slate-100 border-none">Todo</Badge>;
+      return <Badge className="bg-slate-100 text-slate-500 hover:bg-slate-100 border-none">Bajarilmagan</Badge>;
   }
 }
 

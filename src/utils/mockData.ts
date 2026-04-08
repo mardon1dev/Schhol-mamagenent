@@ -3,12 +3,12 @@ import { Grade } from '../types/curriculum';
 export const MOCK_CURRICULUM: Grade[] = [
   {
     id: 'g10',
-    title: 'Grade 10',
+    title: '10-sinf',
     subjects: [
       {
         id: 's1',
         gradeId: 'g10',
-        title: 'Mathematics',
+        title: 'Matematika',
         modules: [
           {
             id: 'm1',
@@ -18,30 +18,30 @@ export const MOCK_CURRICULUM: Grade[] = [
               {
                 id: 'l1',
                 moduleId: 'm1',
-                title: 'Quadratic Equations',
+                title: 'Kvadrat tenglamalar',
                 status: 'In Progress',
                 objectives: [
-                  'Understand the standard form ax² + bx + c = 0',
-                  'Solve quadratic equations by factoring',
-                  'Apply the quadratic formula to find roots'
+                  'ax² + bx + c = 0 ko\'rinishidagi standart shaklni tushunish',
+                  'Kvadrat tenglamalarni ko\'paytuvchilarga ajratish orqali yechish',
+                  'Ildizlarni topish uchun kvadrat formulani qo\'llash'
                 ],
                 resources: [
-                  { id: 'r1', title: 'Standard Form Worksheet', type: 'pdf', url: '#' },
-                  { id: 'r2', title: 'Intro to Quadratics Video', type: 'video', url: '#' }
+                  { id: 'r1', title: 'Standart shakl ish varag\'i', type: 'pdf', url: '#' },
+                  { id: 'r2', title: 'Kvadrat tenglamalarga kirish videosi', type: 'video', url: '#' }
                 ]
               },
               {
                 id: 'l2',
                 moduleId: 'm1',
-                title: 'Polynomials',
+                title: 'Ko\'phadlar',
                 status: 'Todo',
                 objectives: [
-                  'Identify the degree of polynomials',
-                  'Perform addition and subtraction of terms',
-                  'Multiply binomials using the FOIL method'
+                  'Ko\'phadlarning darajasini aniqlash',
+                  'Hadlarni qo\'shish va ayirish amallarini bajarish',
+                  'Binomlarni FOIL usuli yordamida ko\'paytirish'
                 ],
                 resources: [
-                  { id: 'r3', title: 'Polynomials Practice Set', type: 'pdf', url: '#' }
+                  { id: 'r3', title: 'Ko\'phadlar bo\'yicha amaliy mashg\'ulotlar', type: 'pdf', url: '#' }
                 ]
               }
             ]
@@ -49,20 +49,20 @@ export const MOCK_CURRICULUM: Grade[] = [
           {
             id: 'm2',
             subjectId: 's1',
-            title: 'Geometry',
+            title: 'Geometriya',
             lessons: [
               {
                 id: 'l3',
                 moduleId: 'm2',
-                title: 'Pythagorean Theorem',
+                title: 'Pifagor teoremasi',
                 status: 'Completed',
                 objectives: [
-                  'State the Pythagorean theorem',
-                  'Find the missing side of a right triangle',
-                  'Apply the theorem to real-world problems'
+                  'Pifagor teoremasini ta\'riflash',
+                  'To\'g\'ri burchakli uchburchakning noma\'lum tomonini topish',
+                  'Teoremani hayotiy masalalarga tatbiq etish'
                 ],
                 resources: [
-                  { id: 'r4', title: 'Geometry Proofs', type: 'pdf', url: '#' }
+                  { id: 'r4', title: 'Geometrik isbotlar', type: 'pdf', url: '#' }
                 ]
               }
             ]
@@ -72,22 +72,22 @@ export const MOCK_CURRICULUM: Grade[] = [
       {
         id: 's2',
         gradeId: 'g10',
-        title: 'Physics',
+        title: 'Fizika',
         modules: [
           {
             id: 'm3',
             subjectId: 's2',
-            title: 'Mechanics',
+            title: 'Mexanika',
             lessons: [
               {
                 id: 'l4',
                 moduleId: 'm3',
-                title: 'Newton\'s Laws',
+                title: 'Nyuton qonunlari',
                 status: 'Todo',
                 objectives: [
-                  'Explain the three laws of motion',
-                  'Calculate force using F = ma',
-                  'Identify action-reaction pairs'
+                  'Harakatning uchta qonunini tushuntirish',
+                  'F = ma formulasi yordamida kuchni hisoblash',
+                  'Ta\'sir va aks ta\'sir juftliklarini aniqlash'
                 ],
                 resources: []
               }
@@ -99,27 +99,27 @@ export const MOCK_CURRICULUM: Grade[] = [
   },
   {
     id: 'g11',
-    title: 'Grade 11',
+    title: '11-sinf',
     subjects: [
       {
         id: 's3',
         gradeId: 'g11',
-        title: 'Chemistry',
+        title: 'Kimyo',
         modules: [
           {
             id: 'm4',
             subjectId: 's3',
-            title: 'Organic Chemistry',
+            title: 'Organik kimyo',
             lessons: [
               {
                 id: 'l5',
                 moduleId: 'm4',
-                title: 'Hydrocarbons',
+                title: 'Uglevodorodlar',
                 status: 'Todo',
                 objectives: [
-                  'Name alkanes, alkenes, and alkynes',
-                  'Draw structural formulas',
-                  'Understand combustion reactions'
+                  'Alkanlar, alkenlar va alkinlarni nomlash',
+                  'Strukturaviy formulalarni chizish',
+                  'Yonish reaksiyalarini tushunish'
                 ],
                 resources: []
               }

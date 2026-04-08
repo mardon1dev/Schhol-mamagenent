@@ -11,15 +11,16 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ onNavigateToExplorer }: DashboardProps) {
-  const { getOverallProgress, getActiveModules } = useCurriculumStore();
+  const { getOverallProgress, getActiveModules, getStats } = useCurriculumStore();
   const progress = getOverallProgress();
   const activeModules = getActiveModules();
+  const stats = getStats();
 
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-2xl font-bold text-slate-800 mb-1">Welcome back, John!</h2>
-        <p className="text-slate-500 text-sm">Here's your curriculum overview.</p>
+        <h2 className="text-2xl font-bold text-slate-800 mb-1">Xush kelibsiz, John!</h2>
+        <p className="text-slate-500 text-sm">O'quv rejangiz bo'yicha qisqacha ma'lumot.</p>
       </section>
 
       {/* Progress Card */}
@@ -28,17 +29,17 @@ export default function Dashboard({ onNavigateToExplorer }: DashboardProps) {
           <BookOpen className="w-24 h-24" />
         </div>
         <CardHeader>
-          <CardTitle className="text-lg font-medium opacity-90">Overall Completion</CardTitle>
+          <CardTitle className="text-lg font-medium opacity-90">Umumiy o'zlashtirish</CardTitle>
           <div className="flex items-baseline gap-2">
             <span className="text-4xl font-bold">{progress}%</span>
-            <span className="text-sm opacity-75">of curriculum</span>
+            <span className="text-sm opacity-75">o'quv rejasi</span>
           </div>
         </CardHeader>
         <CardContent>
           <Progress value={progress} className="h-2 bg-blue-400/30" />
           <div className="mt-4 flex justify-between text-xs opacity-80">
-            <span>Keep going! You're doing great.</span>
-            <span>{Math.round(progress / 10)} / 10 Grades</span>
+            <span>Yaxshi ketyapsiz! To'xtamang.</span>
+            <span>{Math.round(progress / 10)} / 10 Sinf</span>
           </div>
         </CardContent>
       </Card>
@@ -46,12 +47,12 @@ export default function Dashboard({ onNavigateToExplorer }: DashboardProps) {
       {/* Active Modules */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold text-slate-800">Active Modules</h3>
+          <h3 className="text-lg font-bold text-slate-800">Faol modullar</h3>
           <button 
             onClick={onNavigateToExplorer}
             className="text-blue-600 text-sm font-semibold flex items-center gap-1 hover:underline"
           >
-            View all <ArrowRight className="w-4 h-4" />
+            Barchasini ko'rish <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
@@ -87,7 +88,7 @@ export default function Dashboard({ onNavigateToExplorer }: DashboardProps) {
           <Card className="border-dashed border-2 border-slate-200 bg-transparent">
             <CardContent className="p-8 text-center space-y-2">
               <Clock className="w-8 h-8 text-slate-300 mx-auto" />
-              <p className="text-slate-500 text-sm">No active modules. Start a new lesson from the explorer!</p>
+              <p className="text-slate-500 text-sm">Faol modullar yo'q. Explorer orqali yangi darsni boshlang!</p>
             </CardContent>
           </Card>
         )}
@@ -101,8 +102,8 @@ export default function Dashboard({ onNavigateToExplorer }: DashboardProps) {
               <CheckCircle2 className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Completed</p>
-              <p className="text-lg font-bold text-slate-800">12</p>
+              <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Tugallangan</p>
+              <p className="text-lg font-bold text-slate-800">{stats.completed}</p>
             </div>
           </CardContent>
         </Card>
@@ -112,8 +113,8 @@ export default function Dashboard({ onNavigateToExplorer }: DashboardProps) {
               <Clock className="w-5 h-5 text-orange-600" />
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">In Progress</p>
-              <p className="text-lg font-bold text-slate-800">4</p>
+              <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Jarayonda</p>
+              <p className="text-lg font-bold text-slate-800">{stats.inProgress}</p>
             </div>
           </CardContent>
         </Card>

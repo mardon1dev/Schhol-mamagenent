@@ -28,8 +28,8 @@ export default function CurriculumExplorer({ onSelectLesson }: CurriculumExplore
   return (
     <div className="space-y-6">
       <section>
-        <h2 className="text-2xl font-bold text-slate-800 mb-1">Curriculum Explorer</h2>
-        <p className="text-slate-500 text-sm">Drill down to find your lessons.</p>
+        <h2 className="text-2xl font-bold text-slate-800 mb-1">O'quv rejasi</h2>
+        <p className="text-slate-500 text-sm">Darslarni topish uchun bo'limlarni tanlang.</p>
       </section>
 
       <Accordion type="multiple" className="space-y-4">
@@ -47,7 +47,7 @@ export default function CurriculumExplorer({ onSelectLesson }: CurriculumExplore
                 <div>
                   <h3 className="font-bold text-slate-800">{grade.title}</h3>
                   <p className="text-xs text-slate-400 font-medium">
-                    {grade.subjects.length} Subjects • {grade.subjects.reduce((acc, s) => acc + s.modules.reduce((ma, m) => ma + m.lessons.length, 0), 0)} Lessons
+                    {grade.subjects.length} Fan • {grade.subjects.reduce((acc, s) => acc + s.modules.reduce((ma, m) => ma + m.lessons.length, 0), 0)} Dars
                   </p>
                 </div>
               </div>
@@ -65,7 +65,7 @@ export default function CurriculumExplorer({ onSelectLesson }: CurriculumExplore
                       {subject.modules.map((module) => (
                         <div key={module.id} className="space-y-2">
                           <h5 className="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                            Module: {module.title}
+                            Modul: {module.title}
                           </h5>
                           <div className="space-y-1">
                             {module.lessons.map((lesson) => (
